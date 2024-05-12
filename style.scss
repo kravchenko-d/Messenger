@@ -1,0 +1,172 @@
+.messenger {
+    border: 1px solid black;
+    width: 800px;
+    height: 600px;
+
+    display: flex;
+
+    > .chat-list {
+        border-right: 1px solid black;
+        width: 25%;
+        height: 100%;
+        box-sizing: border-box;
+
+        > .cut-chat {
+            display: flex;
+            flex-direction: row;
+            border: 1px solid black;
+            border-radius: 5px;
+            background-color: rgba(54, 238, 198, 0.895);
+            overflow: hidden;
+
+            > .avatar {
+                display: flex;
+                width: 20%;
+                align-items: center;
+                justify-content: center;
+                box-sizing: border-box;
+
+                > img {
+                    width: 90%;
+                }
+            }
+
+            > div {
+                display: flex;
+                flex-direction: column;
+                padding: 4px 0;
+                align-items: center;
+                width: 60%;
+                justify-content: space-between;
+                font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+                > span {
+                    &:first-child {
+                    display: flex;
+                    align-self: start;
+                    font-weight: bold;                       
+                    }
+                }
+
+                &:last-child {
+                    width: 20%;
+                    display: flex;
+                    justify-content: end;
+                    align-items: end;
+                    font-size: 12px;
+                    padding-bottom: 4px;
+                    padding-right: 4px;
+                }
+            }
+        }
+    }
+
+    > .chat {
+        height: 100%;
+        width: 75%;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+
+        > div {
+            display: flex;
+            flex-direction: column;
+            // justify-content: flex-end;
+            height: 85%;
+            overflow-y: scroll;
+            overflow-x: hidden;
+
+            $back-color: bisque;
+
+            > .message {
+                background-color: $back-color;
+                margin: 4px 0;
+                border-radius: 16px;
+                padding: 4px 8px;
+                max-width: 40%;
+                position: relative;
+
+                &:before {
+                    content: "";
+                    width: 11px;
+                    height: 5px;
+                    background-color: $back-color;
+                    position: absolute;
+
+                    z-index: -1;
+
+                }
+
+                &:after {
+                    content: "";
+                    background-color: white;
+                    width: 15px;
+                    height: 10px;
+                    border-radius: 50%;
+                    position: absolute;
+                  
+                    z-index: -1;
+                }
+
+                &.left {
+                    margin-right: auto;
+                    margin-left: 8px;
+                    &:before{
+                        bottom: 3px;
+                        left: -5px;
+                        border-bottom-right-radius: 50%;
+                    }
+                    &:after{
+                        bottom: 2px;
+                        left: -12px;  
+                    }
+                }
+                &.right {
+                    margin-left: auto; //auto - максимально доступный отступ при наличии обертки display: flex
+                    margin-right: 8px;
+                    &:before{
+                        bottom: 3px;
+                        right: -5px;
+                        border-bottom-left-radius: 50%;
+                    }
+                    &:after{
+                        bottom: 2px;
+                        right: -12px;  
+                    }
+                }
+
+                > .text {}
+                > .date {
+                    text-align: right;
+                    font-size: 10px;
+                    margin-top: 4px;
+                }
+            }
+        }
+
+        > form {
+            height: 15%;
+            width: 100%;
+            display: flex;
+            align-items: center;
+
+            > textarea {
+                height: calc(100% - 32px);
+                resize: none; //нельзя растягивать вручную
+                margin-left: 16px;
+                box-sizing: border-box;
+                padding: 8px;
+                width: 100%;
+            }
+
+            > button {
+                margin: 0 16px;
+                padding: 8px 12px;
+                border-radius: 4px;
+                border: none;
+                background-color: aqua;
+            }
+        }
+    }
+}
